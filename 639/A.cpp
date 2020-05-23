@@ -79,6 +79,17 @@ const int inf = 1e9 + 7;
 int main(){
     IOS;
 
+    int t;
+    cin >> t ;
+    while(t--){
+      int n , m;
+      cin >> n >> m;
+      if(n == 1 || m == 1) cout << "YES\n";
+      else{
+        if(n == 2 && m == 2) cout << "YES\n";
+        else cout << "NO\n";
+      }
+    }
     #ifdef LOCAL
     cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";       
     #endif

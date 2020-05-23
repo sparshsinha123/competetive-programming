@@ -78,7 +78,7 @@ ll modexp(ll x, ll ex , ll md) {
 const int inf = 1e9 + 7;
 int main(){
     IOS;
-
+    
     #ifdef LOCAL
     cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";       
     #endif

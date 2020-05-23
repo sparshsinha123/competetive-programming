@@ -232,21 +232,6 @@ void sieve(int n){
   }
   cout<<'\n';
 }
-void leastPrimeFactor(int n){
-  vector<int> least(n+1,0);
-  least[1] = 1;
-  for(int i = 2; i <= n; i++){
-    if(least[i] == 0){
-        least[i] = i;
-        for(int j = i * i; j <= n; j += i) {
-          if(least[j]==0) least[j] = i;
-        }
-    }
-  }
-  cout<<"least: ";
-  for(int i = 2; i <= n; i++) cout << "("<<i<<","<<least[i] << ") ";
-  cout<<'\n';  
-}
 
 int main(){
     IOS;

@@ -1,15 +1,9 @@
-#pragma GCC optimize("Ofast")
 #include "bits/stdc++.h"
 using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
 
 
-/*
-                     Keep trying ..!!!!
-                     The journey is more important
-*/
 
 #define eprintf(...)   fprintf(stderr, __VA_ARGS__)
 #define umapii unordered_map < int , int >
@@ -64,10 +58,9 @@ class segTree{
      vector<T> lazy;
      void build(vector <T> &vec){ // O(N)
             v = vec;
-            tree.resize(4 * v.size());
+          tree.resize(4 * v.size());
             lazy.resize(4 * v.size());
             fill(lazy.begin() , lazy.end() , 0);
-            buildUtil(0 , 0 , v.size() - 1);
      }
      void update(int x , int start , int end, int idx , T val){ // O(logN)
             if(idx > end || idx < start) return;
@@ -150,6 +143,9 @@ class segTree{
             return min(lef , rt); // combine nodes
       }
 };
-int main(){
-    IOS;
+
+
+int main(){	
+	IOS;
+
 }

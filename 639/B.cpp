@@ -78,6 +78,36 @@ ll modexp(ll x, ll ex , ll md) {
 const int inf = 1e9 + 7;
 int main(){
     IOS;
+    /*n*(3*n + 1)/2*/
+
+   int t;
+    cin >> t;
+    while(t--){
+      ll n;
+      cin >> n;
+      ll temp = n;
+      ll num = 0;
+      while(temp >= 2){
+        ll low = 1 , high = temp;
+        ll ans = -1;
+        while(low <= high){
+          ll mid = (low + high) / 2;
+          if(mid * (3 * mid + 1) / 2  <= temp){
+            low = mid + 1;
+            ans = mid;
+          } else{
+            high = mid - 1;
+          }
+        }
+        ll sub = ans * (3 * ans + 1) / 2;
+        // debug(sub);        
+        temp -= sub;
+        // debug(temp);  
+        num++;
+      }
+      cout << num << endl;
+
+    }
 
     #ifdef LOCAL
     cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";       

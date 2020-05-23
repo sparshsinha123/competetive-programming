@@ -76,8 +76,86 @@ ll modexp(ll x, ll ex , ll md) {
 }
 
 const int inf = 1e9 + 7;
+int arr[1010][1010];
+vector<string> v;
+int n , m;
+int comp;
+int dx[] = { -1 , 0 , 0 , 1};
+int dy[] = {  0 , 1 , -1, 0};
+void dfs(int x , int y){
+  arr[x][y] = comp;
+  for(int i = 0; i < 4; i++){
+    int new_x = (x + dx[i]);
+    int new_y = (y + dy[i]);
+    if(new_x >= n || new_x < 0 || new_y >= m || new_y < 0 || arr[new_x][new_y] != 0 || v[new_x][new_y] != '#') continue;
+    dfs(new_x , new_y);
+  }
+}
 int main(){
     IOS;
+    cin >> n >> m;
+    v.resize(n);
+    for(int i = 0; i < n; i++){
+      cin >> v[i];
+    }
+    for(int x = 0; x < n; x++){
+      for(int y = 0; y < m; ++y){
+        if(arr[x][y] == 0 && v[x][y] == '#'){
+          ++comp;
+          dfs(x , y);
+        }
+      }
+    }
+    bool rw = false;
+    for(int x = 0; x < n; x++){
+      int z = 0;
+      for(int y = 0; y < m; y++){
+        z += (v[x][y] == '.');
+      }
+      rw = (rw || (z == m));
+    }
+    bool cw = false;
+    for(int y = 0; y < m; ++y){
+      int z = 0;
+      for(int x = 0; x < n; x++){
+        z += (v[x][y] == '.');
+      }
+      cw = (cw || (z == n));
+    }
+    if( (rw && !cw) || (cw && !rw)){
+      cout << -1 << '\n';
+      return 0;
+    }
+    bool bad = false;
+    for(int x = 0; x < n; x++){
+      int y = 0 , c = 0;
+      while(y < m){
+        int j = y;
+        c += (arr[x][y] != 0);
+        while(j < m && arr[x][j] == arr[x][y]) ++j;
+        y = j;
+      }
+      bad = (bad || (c >= 2));
+    }
+    if(bad){
+      cout << -1 << '\n';
+      return 0;
+    }
+    for(int y = 0; y < m; y++){
+      int x = 0 , c = 0;
+      while(x < n){ 
+        c += (arr[x][y] != 0);
+        int i = x;
+        while(i < n && arr[x][y] == arr[i][y]) ++i;
+        x = i;
+      }
+      bad = (bad || (c >= 2));
+    }
+    if(bad){
+      cout << -1 << endl;
+      return 0;
+    }
+    cout << comp << '\n';
 
     #ifdef LOCAL
     cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";       

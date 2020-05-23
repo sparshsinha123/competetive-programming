@@ -78,7 +78,30 @@ ll modexp(ll x, ll ex , ll md) {
 const int inf = 1e9 + 7;
 int main(){
     IOS;
+    int t;
+    cin >> t;
+    while(t--){
+      int n;
+      cin >> n;
+      vll v(n);
+      map<ll , ll> cnt;
+      for(int i = 0; i < n; i++){
+        cin >> v[i];
+        v[i] = (v[i] + i) % n;
+        if(v[i] < 0) v[i] += n;
+        cnt[v[i]]++;
+      }
+      bool yes = false;
+      for(auto x : cnt){
+         if(x.second >= 2){
+          yes = true;
+          break;
+         }
+      }
+      if(yes) cout << "NO\n";
+      else cout << "YES\n";
 
+    }
     #ifdef LOCAL
     cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";       
     #endif
