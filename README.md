@@ -1,10 +1,10 @@
 # time-series-outlier-detection
-
 A python script which contains functions which perform time series decomposition (using STL / Classical decomposition) and returns the outliers in the series along with severity scores for the outliers
 
-# Usage with default parameters : ./time_series_analysis.py <input_file> -o <output_file>
+## Usage with default parameters :
+    ./time_series_analysis.py <input_file> -o <output_file>
 
-# OPTIONS
+## OPTIONS
     -i <input_file>
         Input file from which to read input
     -o <output_file>")
@@ -31,5 +31,5 @@ A python script which contains functions which perform time series decomposition
     --help
         Prints the documentation 
 
-   # Example usage:
+   ## Example usage:
     ./time_series_analysis.py -i input.csv -o output.csv --verbose=1 --index_col='Date' --method=CLASSICAL --seasonality_stl=7 --robust=1") 
